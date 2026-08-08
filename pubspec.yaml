@@ -37,6 +37,7 @@ dependencies:
   http: ^1.6.0
   bloc_presentation: ^1.1.2+3
   cubit_form: ^3.0.7
+  bloc: ^9.2.1
 
 dev_dependencies:
   flutter_test:

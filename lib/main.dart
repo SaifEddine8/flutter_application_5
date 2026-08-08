@@ -2,8 +2,10 @@ import 'package:cubit_form/cubit_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/cubits/fav_cubit.dart';
 import 'package:flutter_application_5/cubits/loading_cubit.dart';
+import 'package:flutter_application_5/cubits/password_visible_cubit.dart';
 import 'package:flutter_application_5/screens/bottom_nav_bar_screen.dart';
 import 'package:flutter_application_5/screens/home_screen.dart';
+import 'package:flutter_application_5/screens/login_screen.dart';
 
 void main() {
   runApp(
@@ -12,9 +14,10 @@ void main() {
         BlocProvider(create: (context) => FavCubit()),
 
         BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context)=>PasswordVisibleCubit())
       ],
 
-      child: const MaterialApp(home: BottomNavBarScreen()),
+      child: const MaterialApp(home: LoginScreen()),
     ),
   );
 }

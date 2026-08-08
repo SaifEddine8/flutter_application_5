@@ -23,13 +23,19 @@ class CardProduct extends StatelessWidget {
               Text(item.price),
             ],
           ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: Icon(
-              context.read<FavCubit>().state
-                  ? Icons.favorite
-                  : Icons.favorite_outline,
+          BlocBuilder<FavCubit,bool>(
+            builder: (context, state) => 
+            Positioned(
+              top: 10,
+              right: 10,
+              child: InkWell(
+                onTap: () => context.read<FavCubit>().convertFav(),
+                child: Icon(
+                  state
+                      ? Icons.favorite
+                      : Icons.favorite_outline,
+                ),
+              ),
             ),
           ),
         ],

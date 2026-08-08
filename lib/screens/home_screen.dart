@@ -22,24 +22,28 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: context.read<CounterCubit>().state
-            ? Column(
-                children: [
-                  Text('loading'),
-                  CircularProgressIndicator(color: Colors.black),
-                ],
-              )
-            : GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
+      body: BlocBuilder<CounterCubit,bool>(
+        builder: (context, state) => 
+        SafeArea(
+          child: context.read<CounterCubit>().state
+              ? Column(
+                
+                  children: [
+                    Text('loading'),
+                    CircularProgressIndicator(color: Colors.black),
+                  ],
+                )
+              : GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: productsList.length,
+                  itemBuilder: ((context, index) =>
+                      CardProduct(item: productsList[index])),
                 ),
-                itemCount: productsList.length,
-                itemBuilder: ((context, index) =>
-                    CardProduct(item: productsList[index])),
-              ),
+        ),
       ),
     );
   }
