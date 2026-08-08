@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 
 class CardProduct extends StatelessWidget {
   ProductModel item;
+
   CardProduct({super.key, required this.item});
 
   @override
@@ -23,18 +24,13 @@ class CardProduct extends StatelessWidget {
               Text(item.price),
             ],
           ),
-          BlocBuilder<FavCubit,bool>(
-            builder: (context, state) => 
-            Positioned(
+          BlocBuilder<FavCubit, bool>(
+            builder: (context, state) => Positioned(
               top: 10,
               right: 10,
               child: InkWell(
                 onTap: () => context.read<FavCubit>().convertFav(),
-                child: Icon(
-                  state
-                      ? Icons.favorite
-                      : Icons.favorite_outline,
-                ),
+                child: Icon(state ? Icons.favorite : Icons.favorite_outline),
               ),
             ),
           ),

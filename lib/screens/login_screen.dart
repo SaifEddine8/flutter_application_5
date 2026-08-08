@@ -1,6 +1,6 @@
-
 import 'package:cubit_form/cubit_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/cubits/password_state.dart';
 import 'package:flutter_application_5/cubits/password_visible_cubit.dart';
 import 'package:flutter_application_5/screens/home_screen.dart';
 
@@ -18,10 +18,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               const Text(
                 'Login',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
 
               const SizedBox(height: 30),
@@ -37,18 +34,23 @@ class LoginScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              BlocBuilder<PasswordVisibleCubit,bool>(
-                builder: (context, state) => 
-                 TextFormField(
-                  obscureText: state,
+              BlocBuilder<togglePasswordVisibility, PasswordState>(
+                builder: (context, state) => TextFormField(
+                  obscureText: state.passwordIsVisible,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     suffixIcon: InkWell(
-                      onTap: () => context.read<PasswordVisibleCubit>().convertvisible(),
-                      child: Icon(state==true?Icons.visibility_off:Icons.visibility))
+                      onTap: () =>
+                          context.read<togglePasswordVisibility>().Convert(),
+                      child: Icon(
+                        state.passwordIsVisible == true
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -60,7 +62,10 @@ class LoginScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
                   },
                   child: const Text('Login'),
                 ),
@@ -72,4 +77,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

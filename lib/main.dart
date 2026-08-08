@@ -14,7 +14,7 @@ void main() {
         BlocProvider(create: (context) => FavCubit()),
 
         BlocProvider(create: (context) => CounterCubit()),
-        BlocProvider(create: (context)=>PasswordVisibleCubit())
+        BlocProvider(create: (context) => togglePasswordVisibility()),
       ],
 
       child: const MaterialApp(home: LoginScreen()),
