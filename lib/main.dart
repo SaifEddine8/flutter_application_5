@@ -12,20 +12,19 @@ import 'package:flutter_application_5/screens/task_screen.dart';
 
 void main() {
   runApp(
-    // MultiBlocProvider(
-    //   providers: [
-    //     BlocProvider(create: (context) => FavCubit()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => FavCubit()),
 
-<<<<<<< HEAD
-    //     BlocProvider(create: (context) => CounterCubit()),
-    //     BlocProvider(create: (context) => togglePasswordVisibility()),
-    //   ],
+        BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context) => togglePasswordVisibility()),
+      
 
         BlocProvider(
           create: (context) => CounterBloc(),
           child: MaterialApp(home: LoginScreen())),
     
-=======
+
         BlocProvider(create: (context) => CounterCubit()),
 
         BlocProvider(create: (context) => togglePasswordVisibility()),
@@ -33,6 +32,5 @@ void main() {
 
       child: const MaterialApp(home: TaskScreen()),
     ),
->>>>>>> 137f790c02109dcbadbf0377c08b6b849d8e20ce
   );
 }
