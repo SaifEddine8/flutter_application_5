@@ -1,5 +1,7 @@
 import 'package:cubit_form/cubit_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/bloc/to%20do%20app%20bloc/to_do_bloc.dart';
+import 'package:flutter_application_5/bloc/to%20do%20app%20bloc/to_do_event.dart';
 import 'package:flutter_application_5/cubits/task_cubit.dart';
 import 'package:flutter_application_5/model/task.dart';
 
@@ -30,7 +32,7 @@ class TaskCard extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () => context.read<TaskCubit>().remove(task.id),
+          onTap: () => context.read<ToDoBloc>().add(RemoveTaskEvent(task.id)),
           child: Icon(Icons.delete),
         ),
       ],

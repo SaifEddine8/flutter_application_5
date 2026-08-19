@@ -1,6 +1,7 @@
 import 'package:cubit_form/cubit_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/bloc/counter_bloc.dart';
+import 'package:flutter_application_5/bloc/to%20do%20app%20bloc/to_do_bloc.dart';
 import 'package:flutter_application_5/cubits/fav_cubit.dart';
 import 'package:flutter_application_5/cubits/loading_cubit.dart';
 import 'package:flutter_application_5/cubits/password_visible_cubit.dart';
@@ -18,7 +19,7 @@ void main() {
 
         BlocProvider(create: (context) => CounterCubit()),
         BlocProvider(create: (context) => togglePasswordVisibility()),
-      
+      BlocProvider(create: (context)=>ToDoBloc()),
 
         BlocProvider(
           create: (context) => CounterBloc(),
